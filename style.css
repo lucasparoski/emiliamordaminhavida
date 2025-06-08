@@ -5,10 +5,12 @@ html, body {
   height: 100%;
   overflow: hidden;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #000;
+  /* A COR DE FUNDO FOI REMOVIDA DAQUI */
 }
 
 .slideshow {
+  /* E ADICIONADA AQUI */
+  background-color: #000; 
   position: fixed;
   top: 0;
   left: 0;
