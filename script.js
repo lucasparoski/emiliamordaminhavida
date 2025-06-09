@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- CÓDIGO DOS EMOJIS CAINDO ---
   const emojis=["❤️","🥰","💌"];function criarEmoji(){const emoji=document.createElement("div");emoji.classList.add("emoji");emoji.innerText=emojis[Math.floor(Math.random()*emojis.length)];emoji.style.left=Math.random()*100+"vw";document.body.appendChild(emoji);setTimeout(()=>{emoji.remove();},6000);}setInterval(criarEmoji,500);
 
-  // --- NOVA LÓGICA DA CAIXINHA DE CARINHO ---
+  // --- LÓGICA DA CAIXINHA DE CARINHO (ATUALIZADA) ---
   const frasesDeCarinho = [
+    // Frases antigas
     "voce tem os zoios mais lindos do mundo",
     "voce tem o sorriso mais lindo que eu já vi",
     "eu amo quando eu faço paiacice e vejo voce mostrando esse sorriso lindo",
@@ -21,17 +22,33 @@ document.addEventListener("DOMContentLoaded", function () {
     "amo quando voce me olha com os olhinhos brilhando e com uma carinha boba",
     "te amo muito",
     "voce é a dona do meu coração",
-    "voce é o amor da minha vida"
+    "voce é o amor da minha vida",
+    // Novas frases adicionadas
+    "obrigado por cuidar tanto de mim",
+    "amo voce ué",
+    "amo ir na sua casa e ficar o dia inteiro sem fazer nada com voce",
+    "amo VOCE, só VOCE, unicamente VOCE",
+    "voce é tao perfeita",
+    "voce parece um sonho",
+    "voce é mais gostosa que pizza"
   ];
 
   const caixinhaBtn = document.getElementById('caixinha-btn');
   const mensagemContainer = document.getElementById('mensagem-container');
   const mensagemTexto = document.getElementById('mensagem-texto');
-  let timeoutId; // Variável para controlar o timer
+  let timeoutId;
+  let ultimoIndice = -1; // Variável para guardar o índice da última frase mostrada
 
   caixinhaBtn.addEventListener('click', function() {
-    // Sorteia uma frase aleatória
-    const fraseAleatoria = frasesDeCarinho[Math.floor(Math.random() * frasesDeCarinho.length)];
+    let novoIndice;
+    
+    // MELHORIA: Garante que o novo índice seja diferente do último
+    do {
+      novoIndice = Math.floor(Math.random() * frasesDeCarinho.length);
+    } while (frasesDeCarinho.length > 1 && novoIndice === ultimoIndice);
+
+    ultimoIndice = novoIndice; // Atualiza o último índice
+    const fraseAleatoria = frasesDeCarinho[novoIndice];
     
     // Define o texto e mostra o container
     mensagemTexto.innerText = fraseAleatoria;
