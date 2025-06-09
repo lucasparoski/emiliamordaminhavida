@@ -65,7 +65,6 @@ html, body {
 .spotify-logo {
   flex-shrink: 0;
 }
-/* Estilo que define o tamanho correto da imagem do logo */
 .spotify-logo img {
   width: 24px;
   height: 24px;
@@ -129,4 +128,27 @@ html, body {
   letter-spacing: 1px;
   opacity: 0.7;
   margin-top: 5px;
+}
+
+/* --- ESTILOS DOS EMOJIS CAINDO ADICIONADOS DE VOLTA --- */
+.emoji {
+  position: fixed;
+  top: -10vh; /* Começa a cair de uma posição acima da tela */
+  font-size: 1.5rem;
+  z-index: 1000; /* Garante que fiquem na frente de tudo */
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1; /* A animação acontece uma vez por emoji */
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+  to {
+    /* Cai até um pouco depois do final da tela para sumir suavemente */
+    transform: translateY(110vh) rotate(360deg); 
+    opacity: 0.5;
+  }
 }

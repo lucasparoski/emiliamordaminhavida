@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // --- LÓGICA DA FAIXA DE IMAGENS (INALTERADA) ---
+  // --- LÓGICA DA FAIXA DE IMAGENS ---
   const imagens = [
     "https://i.imgur.com/TshYE70.jpeg",
     "https://i.imgur.com/7RTi0NI.jpeg",
@@ -17,30 +17,43 @@ document.addEventListener("DOMContentLoaded", function () {
     scroller.appendChild(scrollerInner);
   }
 
-  // --- NOVA LÓGICA CORRIGIDA DO CONTADOR (Anos, Meses, Dias) ---
+  // --- LÓGICA DO CONTADOR ---
   const dataInicio = new Date('2025-02-27T00:00:00');
   const hoje = new Date();
-
-  // Apenas calcula se a data de hoje for posterior à data de início
   if (hoje >= dataInicio) {
     let anos = hoje.getFullYear() - dataInicio.getFullYear();
     let meses = hoje.getMonth() - dataInicio.getMonth();
     let dias = hoje.getDate() - dataInicio.getDate();
-
-    // Ajusta os valores se meses ou dias forem negativos ("empresta" do maior)
     if (dias < 0) {
       meses--;
-      // Pega o número de dias do último dia do mês anterior
       dias += new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
     }
     if (meses < 0) {
       anos--;
       meses += 12;
     }
-
-    // Atualiza os elementos na página com os valores corretos
     document.getElementById('anos').innerText = anos;
     document.getElementById('meses').innerText = meses;
     document.getElementById('dias').innerText = dias;
   }
+  
+  // --- CÓDIGO DOS EMOJIS CAINDO ADICIONADO DE VOLTA ---
+  const emojis = ["❤️", "🥰", "💌"];
+  function criarEmoji() {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji");
+    emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * 100 + "vw";
+    // Define uma duração de animação aleatória para cada emoji
+    emoji.style.animationDuration = (4 + Math.random() * 4) + "s"; 
+    document.body.appendChild(emoji);
+
+    // Remove o emoji da página depois que ele terminar de cair
+    setTimeout(() => {
+      emoji.remove();
+    }, 8000); // Tempo um pouco maior que a duração da animação
+  }
+
+  // Cria um novo emoji a cada 500ms (meio segundo)
+  setInterval(criarEmoji, 500);
 });
