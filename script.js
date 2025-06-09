@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Array de fotos para o slideshow.
   const imagens = [
     "https://i.imgur.com/TshYE70.jpeg",
-    "https://i.imgur.com/I8DkpOA.jpeg" // Este é o link direto para a imagem do seu álbum mais recente.
+    "https://i.imgur.com/7RTi0NI.jpeg" // Este é o link direto para a imagem do seu álbum mais recente.
   ];
   let index = 0;
 
