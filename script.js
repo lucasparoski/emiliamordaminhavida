@@ -37,23 +37,24 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('dias').innerText = dias;
   }
   
-  // --- CÓDIGO DOS EMOJIS CAINDO ADICIONADO DE VOLTA ---
+  // --- CÓDIGO DOS EMOJIS CAINDO ---
   const emojis = ["❤️", "🥰", "💌"];
   function criarEmoji() {
     const emoji = document.createElement("div");
     emoji.classList.add("emoji");
     emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
     emoji.style.left = Math.random() * 100 + "vw";
-    // Define uma duração de animação aleatória para cada emoji
-    emoji.style.animationDuration = (4 + Math.random() * 4) + "s"; 
+    
+    // A LINHA DA DURAÇÃO DA ANIMAÇÃO FOI REMOVIDA DAQUI
+    
     document.body.appendChild(emoji);
 
     // Remove o emoji da página depois que ele terminar de cair
     setTimeout(() => {
       emoji.remove();
-    }, 8000); // Tempo um pouco maior que a duração da animação
+    }, 6000); // Duração fixa para combinar com o CSS
   }
 
-  // Cria um novo emoji a cada 500ms (meio segundo)
+  // Cria um novo emoji a cada 500ms
   setInterval(criarEmoji, 500);
 });

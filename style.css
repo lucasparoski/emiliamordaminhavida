@@ -5,7 +5,6 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #121212;
   color: white;
-  /* overflow-x: hidden; FOI REMOVIDO DAQUI */
 }
 
 /* Container principal do conteúdo */
@@ -73,7 +72,7 @@ html, body {
 /* --- Estilos da faixa de imagens --- */
 .image-scroller {
   width: 100%;
-  overflow: hidden; /* Esta regra aqui é suficiente */
+  overflow: hidden;
   padding: 20px 0;
   white-space: nowrap;
   box-shadow: 0 -5px 15px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.2);
@@ -130,15 +129,14 @@ html, body {
   margin-top: 5px;
 }
 
-/* --- ESTILOS DOS EMOJIS CAINDO --- */
+/* --- ESTILOS DOS EMOJIS CAINDO (VERSÃO ROBUSTA) --- */
 .emoji {
   position: fixed;
   top: -10vh;
   font-size: 1.5rem;
   z-index: 1000;
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: 1;
+  /* Animação completa definida aqui, com duração de 6s */
+  animation: fall 6s linear;
 }
 
 @keyframes fall {
@@ -148,6 +146,6 @@ html, body {
   }
   to {
     transform: translateY(110vh) rotate(360deg); 
-    opacity: 0.5;
+    opacity: 0;
   }
 }
