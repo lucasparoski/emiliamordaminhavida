@@ -94,7 +94,7 @@ html, body {
   100% { transform: translateX(-50%); }
 }
 
-/* --- NOVOS ESTILOS PARA A LINHA DO TEMPO HORIZONTAL --- */
+/* --- ESTILOS PARA A LINHA DO TEMPO HORIZONTAL --- */
 #timeline {
   padding: 50px 0;
 }
@@ -107,14 +107,12 @@ html, body {
 }
 .timeline-container {
   display: flex;
-  overflow-x: auto; /* Habilita a rolagem horizontal */
-  overflow-y: hidden; /* Esconde a rolagem vertical */
+  overflow-x: auto;
+  overflow-y: hidden;
   padding: 20px;
-  /* Melhora a experiência de rolagem em telas de toque */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
 }
-/* Estilo da barra de rolagem (para navegadores compatíveis) */
 .timeline-container::-webkit-scrollbar {
   height: 8px;
 }
@@ -125,24 +123,24 @@ html, body {
 .timeline-container::-webkit-scrollbar-track {
   background: #1e1e1e;
 }
-/* Cada "card" da linha do tempo */
 .timeline-item {
-  flex: 0 0 280px; /* Define um tamanho fixo para cada card */
+  flex: 0 0 280px;
   margin-right: 20px;
   background-color: #1e1e1e;
   border-radius: 10px;
-  overflow: hidden; /* Garante que a imagem não saia do card */
+  overflow: hidden;
   border: 1px solid #2a4a6b;
-  scroll-snap-align: start; /* Faz o scroll "travar" no início de cada card */
+  scroll-snap-align: start;
 }
 .timeline-item img {
   width: 100%;
   height: 180px;
-  object-fit: cover; /* Garante que a imagem preencha o espaço */
+  object-fit: cover;
   display: block;
 }
 .timeline-body {
   padding: 15px;
+  text-align: left;
 }
 .timeline-body h3 {
   margin-top: 0;
