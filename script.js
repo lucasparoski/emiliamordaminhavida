@@ -45,16 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
     emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
     emoji.style.left = Math.random() * 100 + "vw";
     
-    // A LINHA DA DURAÇÃO DA ANIMAÇÃO FOI REMOVIDA DAQUI
-    
     document.body.appendChild(emoji);
 
-    // Remove o emoji da página depois que ele terminar de cair
     setTimeout(() => {
       emoji.remove();
-    }, 6000); // Duração fixa para combinar com o CSS
+    }, 6000);
   }
-
-  // Cria um novo emoji a cada 500ms
   setInterval(criarEmoji, 500);
 });
