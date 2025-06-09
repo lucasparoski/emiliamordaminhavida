@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Apenas troque os links aqui para adicionar ou mudar as fotos.
-  // Para adicionar mais fotos ao slideshow, basta adicionar mais links dentro dos colchetes, separados por vírgula.
+  // Array de fotos para o slideshow.
   const imagens = [
     "https://i.imgur.com/TshYE70.jpeg",
-    "https://i.imgur.com/pA8z04g.jpeg" // Link direto da nova imagem que você enviou
+    "https://i.imgur.com/pA8z04g.jpeg" // Este é o link direto para a imagem do seu álbum mais recente.
   ];
   let index = 0;
 
