@@ -9,66 +9,38 @@ document.addEventListener("DOMContentLoaded", function () {
     "https://i.imgur.com/tYYx5cN.jpeg"
   ];
   const scroller = document.getElementById("image-scroller");
-  const scrollerInner = document.createElement('div');
-  scrollerInner.classList.add('scroller-inner');
-  imagens.forEach(link => { const img = document.createElement('img'); img.src = link; scrollerInner.appendChild(img); });
-  imagens.forEach(link => { const img = document.createElement('img'); img.src = link; scrollerInner.appendChild(img); });
-  scroller.appendChild(scrollerInner);
+  if (scroller) {
+    const scrollerInner = document.createElement('div');
+    scrollerInner.classList.add('scroller-inner');
+    imagens.forEach(link => { const img = document.createElement('img'); img.src = link; scrollerInner.appendChild(img); });
+    imagens.forEach(link => { const img = document.createElement('img'); img.src = link; scrollerInner.appendChild(img); });
+    scroller.appendChild(scrollerInner);
+  }
 
-  // --- NOVA LÓGICA DO CONTADOR DETALHADO E EM TEMPO REAL ---
+  // --- NOVA LÓGICA CORRIGIDA DO CONTADOR (Anos, Meses, Dias) ---
   const dataInicio = new Date('2025-02-27T00:00:00');
+  const hoje = new Date();
 
-  function atualizarContador() {
-    const agora = new Date();
+  // Apenas calcula se a data de hoje for posterior à data de início
+  if (hoje >= dataInicio) {
+    let anos = hoje.getFullYear() - dataInicio.getFullYear();
+    let meses = hoje.getMonth() - dataInicio.getMonth();
+    let dias = hoje.getDate() - dataInicio.getDate();
 
-    if (agora < dataInicio) {
-      // Se a data ainda não chegou, não faz nada ou mostra uma mensagem
-      return;
-    }
-
-    let tempDate = new Date(dataInicio);
-
-    let anos = agora.getFullYear() - tempDate.getFullYear();
-    tempDate.setFullYear(tempDate.getFullYear() + anos);
-    if (tempDate > agora) {
-      anos--;
-      tempDate.setFullYear(tempDate.getFullYear() - 1);
-    }
-
-    let meses = agora.getMonth() - tempDate.getMonth() + (12 * (agora.getFullYear() - tempDate.getFullYear()));
-    tempDate.setMonth(tempDate.getMonth() + meses);
-     if (tempDate > agora) {
+    // Ajusta os valores se meses ou dias forem negativos ("empresta" do maior)
+    if (dias < 0) {
       meses--;
-      tempDate.setMonth(tempDate.getMonth() - 1);
+      // Pega o número de dias do último dia do mês anterior
+      dias += new Date(hoje.getFullYear(), hoje.getMonth(), 0).getDate();
     }
-    
-    const umDia = 1000 * 60 * 60 * 24;
-    let dias = Math.floor((agora - tempDate) / umDia);
+    if (meses < 0) {
+      anos--;
+      meses += 12;
+    }
 
-    let diffRestante = (agora - tempDate) % umDia;
-
-    let horas = Math.floor(diffRestante / (1000 * 60 * 60));
-    diffRestante %= (1000 * 60 * 60);
-
-    let minutos = Math.floor(diffRestante / (1000 * 60));
-    diffRestante %= (1000 * 60);
-
-    let segundos = Math.floor(diffRestante / 1000);
-
-    // Adiciona um zero à esquerda se o número for menor que 10
-    const pad = (num) => num.toString().padStart(2, '0');
-
+    // Atualiza os elementos na página com os valores corretos
     document.getElementById('anos').innerText = anos;
     document.getElementById('meses').innerText = meses;
     document.getElementById('dias').innerText = dias;
-    document.getElementById('horas').innerText = pad(horas);
-    document.getElementById('minutos').innerText = pad(minutos);
-    document.getElementById('segundos').innerText = pad(segundos);
   }
-
-  // Atualiza o contador a cada segundo
-  setInterval(atualizarContador, 1000);
-  
-  // Roda a função uma vez imediatamente para não esperar 1s para aparecer
-  atualizarContador();
 });
