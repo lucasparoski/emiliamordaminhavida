@@ -1,22 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Array de fotos para o slideshow.
+  // Array de fotos. Você pode adicionar ou remover links aqui.
   const imagens = [
     "https://i.imgur.com/TshYE70.jpeg",
-    "https://i.imgur.com/7RTi0NI.jpeg" // Este é o link direto para a imagem do seu álbum mais recente.
+    "https://i.imgur.com/7RTi0NI.jpeg"
   ];
-  let index = 0;
 
-  const slideshow = document.getElementById("slideshow");
+  const scroller = document.getElementById("image-scroller");
+  
+  // Cria o container interno que será animado
+  const scrollerInner = document.createElement('div');
+  scrollerInner.classList.add('scroller-inner');
 
-  function trocarImagem() {
-    slideshow.style.backgroundImage = `url('${imagens[index]}')`;
-    index = (index + 1) % imagens.length;
-  }
+  // Adiciona as imagens ao container
+  imagens.forEach(link => {
+    const img = document.createElement('img');
+    img.src = link;
+    scrollerInner.appendChild(img);
+  });
 
-  trocarImagem();
-  setInterval(trocarImagem, 4000); // troca a cada 4 segundos
+  // DUPLICA as imagens para criar o efeito de loop infinito
+  imagens.forEach(link => {
+    const img = document.createElement('img');
+    img.src = link;
+    scrollerInner.appendChild(img);
+  });
 
-  // Emojis caindo
+  // Adiciona o container com as imagens na página
+  scroller.appendChild(scrollerInner);
+
+
+  // Emojis caindo (código inalterado)
   const emojis = ["❤️", "🥰", "💌"];
   function criarEmoji() {
     const emoji = document.createElement("div");
