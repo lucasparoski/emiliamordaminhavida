@@ -20,20 +20,50 @@ html, body {
   margin: 0 auto 30px;
 }
 
-.spotify-button {
-  display: inline-block;
-  padding: 15px 25px;
-  background-color: #1db954;
-  color: white;
-  font-weight: bold;
+/* --- NOVOS ESTILOS PARA O PLAYER SPOTIFY --- */
+.spotify-player {
+  display: flex;
+  align-items: center;
+  background-color: #2a4a6b; /* Cor azul do player */
+  border-radius: 8px;
+  padding: 12px;
+  max-width: 500px;
+  margin: 0 auto;
   text-decoration: none;
-  border-radius: 30px;
+  color: white;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
-
-.spotify-button:hover {
-  background-color: #17a147;
+.spotify-player:hover {
+  background-color: #3e6a95;
+}
+.album-art {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+}
+.album-art img {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.song-info {
+  flex-grow: 1;
+  text-align: left;
+  margin: 0 15px;
+}
+.song-title {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+.song-artist {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 4px 0 0;
+}
+.spotify-logo {
+  flex-shrink: 0;
 }
 
 /* --- Estilos da faixa de imagens --- */
@@ -61,38 +91,33 @@ html, body {
   100% { transform: translateX(-50%); }
 }
 
-/* --- NOVOS ESTILOS PARA O CONTADOR --- */
+/* --- ESTILOS PARA O CONTADOR --- */
 #contador-container {
   text-align: center;
   padding: 50px 20px;
 }
-
 .header-contador {
   font-size: 1.3rem;
   font-style: italic;
   opacity: 0.8;
   margin-bottom: 25px;
 }
-
 .relogio {
-  display: flex; /* ESSENCIAL para alinhar os itens horizontalmente */
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px; /* Espaçamento entre os blocos */
+  gap: 40px;
 }
-
 .time-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .time-value {
   font-size: 3.5rem;
   font-weight: bold;
   color: #FFFFFF;
 }
-
 .time-label {
   font-size: 1rem;
   text-transform: uppercase;
