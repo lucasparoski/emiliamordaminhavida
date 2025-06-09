@@ -64,37 +64,50 @@ html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background-color:
   100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(224, 36, 94, 0); }
 }
 
+/* Container que posiciona o coração na tela */
 #mensagem-container {
   position: fixed;
   top: 30px;
   left: 50%;
-  width: 250px; /* Largura e altura para ajudar na forma */
-  height: 220px;
+  width: 280px;
+  height: 250px;
   transform: translate(-50%, -20px) scale(0.9);
-  background-color: white;
-  color: #121212;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  font-weight: 500;
   z-index: 1002;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s ease-in-out;
-  /* Novo clip-path que forma um coração */
-  clip-path: polygon(50% 100%, 100% 40%, 100% 0, 50% 25%, 0 0, 0 40%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28); /* Transição com efeito "elástico" */
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
 }
 #mensagem-container.visivel {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0) scale(1);
 }
-#mensagem-container p {
+
+/* O fundo de coração (SVG) */
+.heart-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Fica atrás do texto */
+  fill: white; /* Cor do coração */
+}
+
+/* O parágrafo com o texto da mensagem */
+#mensagem-texto {
+  /* Posicionado no centro do container */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px; /* Espaçamento interno para o texto não vazar */
+  box-sizing: border-box;
   margin: 0;
-  padding: 10px;
   font-size: 1rem;
+  font-weight: 500;
+  color: #121212; /* Cor do texto */
 }
