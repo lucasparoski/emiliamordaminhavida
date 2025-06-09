@@ -69,94 +69,6 @@ html, body {
   height: 24px;
 }
 
-/* --- ESTILOS PARA A LINHA DO TEMPO --- */
-#timeline {
-  padding: 50px 0;
-  position: relative;
-}
-.timeline-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 40px;
-  font-style: italic;
-  color: #fff;
-}
-.timeline-container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-.timeline-container::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background-color: #2a4a6b;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
-  box-shadow: 0 0 10px #2a4a6b;
-}
-.timeline-item {
-  padding: 10px 40px;
-  position: relative;
-  width: 50%;
-  box-sizing: border-box;
-}
-.timeline-item:nth-child(odd) {
-  left: 0;
-  padding-right: 60px;
-  text-align: right;
-}
-.timeline-item:nth-child(even) {
-  left: 50%;
-  padding-left: 60px;
-  text-align: left;
-}
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #121212;
-  border: 4px solid #2a4a6b;
-  top: 25px;
-  border-radius: 50%;
-  z-index: 1;
-}
-.timeline-item:nth-child(odd)::after {
-  right: -12px;
-}
-.timeline-item:nth-child(even)::after {
-  left: -12px;
-}
-.timeline-content {
-  padding: 20px;
-  background-color: #1e1e1e;
-  border: 1px solid #2a4a6b;
-  border-radius: 8px;
-  position: relative;
-}
-.timeline-content h3 {
-  margin-top: 0;
-  color: #1db954;
-}
-.timeline-content p {
-  margin-bottom: 10px;
-}
-.timeline-content img {
-  max-width: 100%;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-.timeline-content .timeline-date {
-  font-size: 0.8rem;
-  font-style: italic;
-  opacity: 0.6;
-  margin-top: 10px;
-  display: block;
-}
-
 /* --- Estilos da faixa de imagens --- */
 .image-scroller {
   width: 100%;
@@ -180,6 +92,72 @@ html, body {
 @keyframes scroll-left {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
+}
+
+/* --- NOVOS ESTILOS PARA A LINHA DO TEMPO HORIZONTAL --- */
+#timeline {
+  padding: 50px 0;
+}
+.timeline-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #fff;
+}
+.timeline-container {
+  display: flex;
+  overflow-x: auto; /* Habilita a rolagem horizontal */
+  overflow-y: hidden; /* Esconde a rolagem vertical */
+  padding: 20px;
+  /* Melhora a experiência de rolagem em telas de toque */
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+/* Estilo da barra de rolagem (para navegadores compatíveis) */
+.timeline-container::-webkit-scrollbar {
+  height: 8px;
+}
+.timeline-container::-webkit-scrollbar-thumb {
+  background: #2a4a6b;
+  border-radius: 4px;
+}
+.timeline-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+/* Cada "card" da linha do tempo */
+.timeline-item {
+  flex: 0 0 280px; /* Define um tamanho fixo para cada card */
+  margin-right: 20px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden; /* Garante que a imagem não saia do card */
+  border: 1px solid #2a4a6b;
+  scroll-snap-align: start; /* Faz o scroll "travar" no início de cada card */
+}
+.timeline-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Garante que a imagem preencha o espaço */
+  display: block;
+}
+.timeline-body {
+  padding: 15px;
+}
+.timeline-body h3 {
+  margin-top: 0;
+  color: #1db954;
+}
+.timeline-body p {
+  margin: 5px 0 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+.timeline-body .timeline-date {
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.6;
+  display: block;
 }
 
 /* --- ESTILOS PARA O CONTADOR --- */
