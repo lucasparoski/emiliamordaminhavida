@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Array de fotos. Você pode adicionar ou remover links aqui.
+  // Array de fotos atualizado com as novas imagens.
   const imagens = [
     "https://i.imgur.com/TshYE70.jpeg",
-    "https://i.imgur.com/7RTi0NI.jpeg"
+    "https://i.imgur.com/7RTi0NI.jpeg",
+    "https://i.imgur.com/qjicO3O.jpeg",
+    "https://i.imgur.com/GDcHdSp.jpeg",
+    "https://i.imgur.com/JjRMfKu.jpeg",
+    "https://i.imgur.com/tYYx5cN.jpeg"
   ];
 
   const scroller = document.getElementById("image-scroller");

@@ -51,7 +51,7 @@ html, body {
 /* O container interno que segura as imagens e é animado */
 .scroller-inner {
   display: inline-block; /* Faz com que o container se ajuste ao conteúdo */
-  animation: scroll-left 30s linear infinite; /* Aplica a animação */
+  animation: scroll-left 90s linear infinite; /* TEMPO DA ANIMAÇÃO ATUALIZADO */
 }
 
 /* Estilo dos "retangulozinhos" (as imagens) */
