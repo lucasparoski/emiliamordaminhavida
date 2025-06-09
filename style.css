@@ -20,11 +20,11 @@ html, body {
   margin: 0 auto 30px;
 }
 
-/* --- NOVOS ESTILOS PARA O PLAYER SPOTIFY --- */
+/* --- ESTILOS PARA O PLAYER SPOTIFY --- */
 .spotify-player {
   display: flex;
   align-items: center;
-  background-color: #2a4a6b; /* Cor azul do player */
+  background-color: #2a4a6b;
   border-radius: 8px;
   padding: 12px;
   max-width: 500px;
@@ -64,6 +64,11 @@ html, body {
 }
 .spotify-logo {
   flex-shrink: 0;
+}
+/* Estilo que define o tamanho correto da imagem do logo */
+.spotify-logo img {
+  width: 24px;
+  height: 24px;
 }
 
 /* --- Estilos da faixa de imagens --- */
