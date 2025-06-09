@@ -36,6 +36,14 @@ html, body {
   background-color: #17a147;
 }
 
+/* Novo estilo para o texto do contador */
+.contador-estilo {
+  margin-top: 35px;
+  font-size: 1.2rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
 /* --- Estilos para a faixa de imagens --- */
 
 .image-scroller {
