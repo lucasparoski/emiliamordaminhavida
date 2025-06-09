@@ -20,7 +20,6 @@ html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background-color:
 .timeline-item{flex:0 0 280px;margin-right:20px;background-color:#1e1e1e;border-radius:10px;overflow:hidden;border:1px solid #2a4a6b;scroll-snap-align:start;}
 .timeline-item img{width:100%;height:180px;object-fit:cover;display:block;}
 .timeline-body{padding:15px;text-align:left;}
-.timeline-body h3{margin-top:0;color:#1db954;}
 .timeline-body p{margin:5px 0 10px;font-size:0.9rem;opacity:0.9;}
 .timeline-body .timeline-date{font-size:0.8rem;font-style:italic;opacity:0.6;display:block;}
 .image-scroller{width:100%;overflow:hidden;padding:20px 0;white-space:nowrap;box-shadow:0 -5px 15px rgba(0,0,0,0.2),0 5px 15px rgba(0,0,0,0.2);}
@@ -36,14 +35,14 @@ html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background-color:
 .emoji{position:fixed;top:-10vh;font-size:1.5rem;z-index:1000;animation:fall 6s linear;}
 @keyframes fall{from{transform:translateY(0) rotate(0);opacity:1;}to{transform:translateY(110vh) rotate(360deg);opacity:0;}}
 
-/* --- NOVOS ESTILOS PARA A CAIXINHA DE CARINHO --- */
+/* --- ESTILOS ATUALIZADOS PARA A CAIXINHA DE CARINHO --- */
 #caixinha-btn {
   position: fixed;
   bottom: 25px;
   right: 25px;
   width: 60px;
   height: 60px;
-  background-color: #e0245e; /* Um tom de rosa/vermelho */
+  background-color: #e0245e;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -57,7 +56,7 @@ html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background-color:
 }
 #caixinha-btn:hover {
   transform: scale(1.1);
-  animation-play-state: paused; /* Pausa a animação ao passar o mouse */
+  animation-play-state: paused;
 }
 @keyframes pulse {
   0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(224, 36, 94, 0.7); }
@@ -69,20 +68,33 @@ html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background-color:
   position: fixed;
   top: 30px;
   left: 50%;
-  transform: translate(-50%, -20px);
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 250px; /* Largura e altura para ajudar na forma */
+  height: 220px;
+  transform: translate(-50%, -20px) scale(0.9);
+  background-color: white;
   color: #121212;
-  padding: 15px 25px;
-  border-radius: 30px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
   font-weight: 500;
   z-index: 1002;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  transition: all 0.4s ease-in-out;
+  /* Novo clip-path que forma um coração */
+  clip-path: polygon(50% 100%, 100% 40%, 100% 0, 50% 25%, 0 0, 0 40%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
 }
 #mensagem-container.visivel {
   opacity: 1;
   visibility: visible;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0) scale(1);
+}
+#mensagem-container p {
+  margin: 0;
+  padding: 10px;
+  font-size: 1rem;
 }
